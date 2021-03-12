@@ -13,7 +13,7 @@
     "core-js": "^3.6.5",
     "eslint-config-airbnb-base": "^14.2.0",
     "fs": "^0.0.1-security",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "marked": "^1.2.0",
     "prismjs": "^1.20.0",
     "vue": "^2.6.11",
