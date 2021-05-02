@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>REAM Editor</title>
+        <meta charset="utf-8" />
+        <script type="module">
+            import init from "./wasm.js"
+            init()
+        </script>
+
+        <style>
+          body, html {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+          }
+
+          .container {
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+          }
+
+          .header {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            display: flex;
+            flex-direction: row;
+            padding: 0px 20px;
+          }
+
+          .header>.name {
+            font-weight: bold;
+          }
+
+          .header>.name>.version {
+            padding: 0px 0px 0px 10px;
+            font-weight: normal;
+            font-size: 15px;
+          }
+
+          .header>.label {
+            padding: 0px 10px 0px 20px;
+            font-size: 15px;
+          }
+
+          .body-container {
+            display: flex;
+            width: 100%;
+            flex: 1;
+          }
+
+          .input-container {
+            width: 50%;
+            padding: 0px 5px 0px 0px;
+          }
+
+          .input-container>textarea {
+            font-size: 20px;
+            width: 100%;
+            height: 100%;
+            resize: none;
+          }
+
+          .output-container {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .output {
+            height: 90%;
+            width: 100%;
+          }
+
+          .output>pre {
+            margin: 0px, 0px;
+            height: 90%;
+            width: 100%;
+            overflow: auto;
+          }
+
+          .error {
+            height: 10%;
+            width: 100%;
+            font-weight: bold;
+          }
+
+        </style>
+    </head>
+    <body></body>
+</html>
