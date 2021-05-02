@@ -1,8 +1,11 @@
 [package]
-name = "ream-yew"
+name = "ream-editor"
+repositry = "https://github.com/chmlee/ream-editor"
 version = "0.1.0"
 authors = ["Chih-Ming Louis Lee <louis@chihminglee.com>"]
 edition = "2018"
+description = "Editor for REAM"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -10,6 +13,7 @@ edition = "2018"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-yew = { version = "0.17", package = "yew-stdweb" }
+yew = { version = "0.17" }
 wasm-bindgen = "0.2.67"
+#ream = { git = "https://github.com/chmlee/ream-core" }
 ream = { path = "../core" }
