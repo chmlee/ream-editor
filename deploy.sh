@@ -4,6 +4,7 @@ cd static
 
 rm .gitignore
 
+git init
 git add -A
 git commit
 
