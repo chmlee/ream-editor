@@ -22,16 +22,19 @@ impl Model {
 
     fn update(&mut self, text: String) {
         self.input = text.to_owned();
-        ConsoleService::log(&text);
+        // ConsoleService::log(&text);
         let result = Parser::new(&self.input).parse_entry();
-        ConsoleService::log("after parse");
+        // ConsoleService::log("after parse");
+        // ConsoleService::log(format!("{:?}", &result).as_str());
         match result {
             Ok(Some(mut entry)) => {
                 let output = match self.target {
                     Target::CSV => {
+                        ConsoleService::log("csv");
                         entry.to_csv_str()
                     },
                     Target::AST => {
+                        ConsoleService::log("ast");
                         entry.to_ast_str_pretty()
                     }
                 };
@@ -51,15 +54,22 @@ impl Model {
 
 }
 
-enum Msg {
+#[derive(Debug)]
+pub enum Msg {
     UpdateInput(String),
     UpdateTarget(Target),
 }
 
-#[derive(Debug)]
-enum Target {
+#[derive(Debug, PartialEq)]
+pub enum Target {
     CSV,
     AST,
+}
+
+impl Model {
+    fn update_target(&mut self, target: Target) {
+        self.target = target;
+    }
 }
 
 impl Component for Model {
@@ -84,7 +94,8 @@ impl Component for Model {
                 self.update(text);
             },
             UpdateTarget(target) => {
-                self.target = target;
+                ConsoleService::log("target updated");
+                self.update_target(target);
                 self.update(self.input.to_owned());
             },
         }
@@ -106,32 +117,36 @@ impl Component for Model {
                     <div class="name">
                         {"REAM"}
                         <span class="version">
-                        {"v0.3.1"}
+                        {"v0.3.2"}
                         </span>
                     </div>
                     <div class="label">
                         {"Target:"}
                     </div>
                     <div class="button-container">
-                        <select
-                            id="target"
-                            name="target"
-                        >
-                            <option
-                                value="CSV"
-                                onclick=self.link.callback(|_| {
-                                    Msg::UpdateTarget(Target::CSV)
-                                })
-                            >
-                                {"CSV"}
-                            </option>
-                            <option
-                                value="AST"
-                                onclick=self.link.callback(|_| {
-                                    Msg::UpdateTarget(Target::AST)
-                                })
-                            >{"AST"}</option>
-                        </select>
+                          <input
+                              type="radio"
+                              id="csv"
+                              name="target"
+                              value="csv"
+                              checked=self.target == Target::CSV
+                              onclick=self.link.callback(|_| {
+                                  Msg::UpdateTarget(Target::CSV)
+                              })
+                          />
+                          <label for="csv">{"CSV"}</label>
+
+                          <input
+                              type="radio"
+                              id="ast"
+                              name="target"
+                              value="ast"
+                              checked=self.target == Target::AST
+                              onclick=self.link.callback(|_| {
+                                  Msg::UpdateTarget(Target::AST)
+                              })
+                            />
+                          <label for="ast">{"AST"}</label>
                     </div>
                 </div>
 
