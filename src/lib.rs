@@ -117,7 +117,7 @@ impl Component for Model {
                     <div class="name">
                         {"REAM"}
                         <span class="version">
-                        {"v0.3.2"}
+                        {"v0.3.3"}
                         </span>
                     </div>
                     <div class="label">
