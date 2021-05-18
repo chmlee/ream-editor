@@ -79,8 +79,28 @@ impl Component for Model {
     fn create(_: Self::Properties, link: ComponentLink<Self>) -> Self {
         Self {
             link,
-            input: String::from("# Title"),
-            output: String::from(""),
+            input: String::from(r#"# Country
+- name: Belgium
+- capital: Brussels
+- population: 11433256
+  > data from 2019; retrieved from World Bank
+- euro_zone: TRUE
+  > joined in 1999
+
+## Language
+- name: Dutch
+- size: 0.59
+
+## Language
+- name: French
+- size: 0.4
+
+## Language
+- name: German
+- size: 0.01"#),
+            output: String::from(r#"Belgium,Brussels,11433256,TRUE,Dutch,0.59
+Belgium,Brussels,11433256,TRUE,French,0.4
+Belgium,Brussels,11433256,TRUE,German,0.01"#),
             cache: String::from(""),
             target: Target::CSV,
             error: String::from(""),
