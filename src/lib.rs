@@ -137,7 +137,7 @@ Belgium,Brussels,11433256,TRUE,German,0.01"#),
                     <div class="name">
                         {"REAM"}
                         <span class="version">
-                        {"v0.3.3"}
+                        {"v0.4.0"}
                         </span>
                     </div>
                     <div class="label">
