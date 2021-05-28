@@ -1,0 +1,24 @@
+[tasks.deploy]
+script = '''
+cd static
+
+rm .gitignore
+
+git init
+git add -A
+git commit
+
+git push git@github.com:chmlee/ream-editor.git master:gh-pages
+
+cd -
+'''
+
+[tasks.wasm_build]
+script = '''
+wasm-pack build --target web --out-name wasm --out-dir ./static
+'''
+
+[tasks.serve]
+script = '''
+python -m http.server -d ./static
+'''

@@ -36,6 +36,10 @@ impl Model {
                     Target::AST => {
                         ConsoleService::log("ast");
                         entry.to_ast_str_pretty()
+                    },
+                    Target::RAW => {
+                        ConsoleService::log("raw");
+                        Ok(format!("{}", entry))
                     }
                 };
                 self.update_output(output.expect("a"));
@@ -64,6 +68,7 @@ pub enum Msg {
 pub enum Target {
     CSV,
     AST,
+    RAW,
 }
 
 impl Model {
@@ -167,6 +172,18 @@ Belgium,Brussels,11433256,TRUE,German,0.01"#),
                               })
                             />
                           <label for="ast">{"AST"}</label>
+
+                          <input
+                              type="radio"
+                              id="raw"
+                              name="target"
+                              value="raw"
+                              checked=self.target == Target::RAW
+                              onclick=self.link.callback(|_| {
+                                  Msg::UpdateTarget(Target::RAW)
+                              })
+                            />
+                          <label for="raw">{"RAW"}</label>
                     </div>
                 </div>
 
